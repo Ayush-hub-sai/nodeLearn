@@ -1,0 +1,38 @@
+node-crud/
+│── server.js          <-- entry point
+│── config/
+│    └── db.js         <-- DB connection
+│── models/
+│    └── itemModel.js  <-- Schema & Model
+│── controllers/
+│    └── itemController.js  <-- CRUD logic
+│── routes/
+│    └── itemRoutes.js <-- API endpoints
+│── .env               <-- secrets
+
+
+Summary
+
+Server starts → loads env → connects to DB → sets middleware → attaches routes.
+
+Routes receive HTTP requests → call controller functions.
+
+Controller executes business logic → uses Model to interact with MongoDB.
+
+Model performs DB operations → returns data.
+
+Controller sends JSON response → client receives it.
+
+
+************************************************************
+Client Request (POST /api/items)
+       ↓
+Route (/api/items → itemRoutes.js)
+       ↓
+Controller (createItem → itemController.js)
+       ↓
+Model (Item.save() → MongoDB)
+       ↓
+Controller sends response
+       ↓
+Client receives JSON response
