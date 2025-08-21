@@ -1,0 +1,63 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Node.js CRUD API",
+      "version": "1.0.0",
+      "description": "A simple CRUD API using Node.js, Express and MongoDB"
+    },
+    "servers": [
+      { "url": "http://localhost:5000" }
+    ],
+    "paths": {
+      "/api/items": {
+        "get": {
+          "summary": "Get all items",
+          "responses": { "200": { "description": "List of items" } }
+        },
+        "post": {
+          "summary": "Create a new item",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": { "type": "object", "properties": { "name": { "type": "string" }, "quantity": { "type": "number" } } }
+              }
+            }
+          },
+          "responses": { "201": { "description": "Item created" } }
+        }
+      },
+      "/api/items/{id}": {
+        "get": {
+          "summary": "Get item by ID",
+          "parameters": [
+            { "in": "path", "name": "id", "required": true, "schema": { "type": "string" } }
+          ],
+          "responses": { "200": { "description": "Item data" } }
+        },
+        "put": {
+          "summary": "Update an item",
+          "parameters": [
+            { "in": "path", "name": "id", "required": true, "schema": { "type": "string" } }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": { "type": "object", "properties": { "name": { "type": "string" }, "quantity": { "type": "number" } } }
+              }
+            }
+          },
+          "responses": { "200": { "description": "Item updated" } }
+        },
+        "delete": {
+          "summary": "Delete an item",
+          "parameters": [
+            { "in": "path", "name": "id", "required": true, "schema": { "type": "string" } }
+          ],
+          "responses": { "200": { "description": "Item deleted" } }
+        }
+      }
+    }
+  }
+  
