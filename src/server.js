@@ -21,6 +21,7 @@ app.use(cors());
 // Routes
 const itemRoutes = require("./routes/itemRoutes");
 app.use("/api/items", itemRoutes);
+app.use("/api/categories", require("./routes/categoryRoutes"));
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
